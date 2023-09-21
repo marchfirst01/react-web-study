@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-key */
+import React from "react";
 import Movie from "./components/Movie";
 import MovieDetail from "./components/MovieDetail";
 import { dummy } from "./movieDummy";
