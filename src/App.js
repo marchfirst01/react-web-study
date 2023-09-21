@@ -1,4 +1,5 @@
 import Movie from "./components/Movie";
+import MovieDetail from "./components/MovieDetail";
 import { dummy } from "./movieDummy";
 
 function App() {
@@ -7,16 +8,25 @@ function App() {
       <div className="app-container">
         {dummy.results.map((item) => {
           return (
-            <Movie
-              title={item.title}
-              poster_path={item.poster_path}
-              vote_average={item.vote_average}
-            />
+            <div className="wrapper">
+              <Movie
+                title={item.title}
+                poster_path={item.poster_path}
+                vote_average={item.vote_average}
+              />
+              <MovieDetail
+                title={item.title}
+                vote_average={item.vote_average}
+                overview={item.overview}
+              />
+            </div>
           );
         })}
       </div>
     </div>
   );
 }
+
+
 
 export default App;
