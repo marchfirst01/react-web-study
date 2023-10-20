@@ -1,45 +1,28 @@
 /* eslint-disable react/jsx-key */
-import React from "react";
-import { styled } from "styled-components";
-import Movie from "./components/Movie/Movie";
-import MovieDetail from "./components/MovieDetail/MovieDetail";
-import { dummy } from "./movieDummy";
+import React from 'react';
+import Header from './components/Header/Header';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Celebrity from './pages/Celebrity';
+import Tv from './pages/TV';
+import Movies from './pages/Movies';
+import MovieDetail from './pages/MovieDetail';
+import Home from './pages/Home';
 
 function App() {
   return (
     <div>
-      <AppContainer>
-        {dummy.results.map((item) => {
-          return (
-            <Wrapper>
-              <Movie
-                title={item.title}
-                poster_path={item.poster_path}
-                vote_average={item.vote_average}
-              />
-              <MovieDetail
-                title={item.title}
-                vote_average={item.vote_average}
-                overview={item.overview}
-              />
-            </Wrapper>
-          );
-        })}
-      </AppContainer>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Celebrity" element={<Celebrity />} />
+          <Route path="/TV" element={<Tv />} />
+          <Route path="/movie" element={<Movies />} />
+          <Route path="/movie/:title" element={<MovieDetail />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
-
-const AppContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`;
-
-const Wrapper = styled.div`
-  position: relative;
-`
-
-
 
 export default App;
